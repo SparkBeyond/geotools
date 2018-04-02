@@ -1,3 +1,5 @@
+// Modified version. See source at https://github.com/SparkBeyond/geotools
+
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
@@ -688,14 +690,13 @@ public class FactoryRegistry extends ServiceRegistry {
      */
     public final Set<ClassLoader> getClassLoaders() {
         final Set<ClassLoader> loaders = new HashSet<ClassLoader>();
-        for (int i=0; i<4; i++) {
+        for (int i=0; i<3; i++) {
             final ClassLoader loader;
             try {
                 switch (i) {
                     case 0:  loader = getClass().getClassLoader();                    break;
                     case 1:  loader = FactoryRegistry.class.getClassLoader();         break;
                     case 2:  loader = Thread.currentThread().getContextClassLoader(); break;
-                    case 3:  loader = ClassLoader.getSystemClassLoader();             break;
                     // Add any supplementary class loaders here, if needed.
                     default: throw new AssertionError(i); // Should never happen.
                 }
